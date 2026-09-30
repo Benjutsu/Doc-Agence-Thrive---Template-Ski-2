@@ -14,6 +14,8 @@ La méthode `getCurrentSeason()` de `src/StarterSite.php` applique cet ordre de 
 
 Les options sont déclarées dans `src/Model/Options/season_options.php`. Le mode forcé est pratique pour les tests et la recette. En production, il faut laisser `Force the season` à `None` pour utiliser le calendrier.
 
+**Exemple :** avec un début d'hiver au `10/15` et une fin au `04/15`, le site est en mode `winter` du 15 octobre au 15 avril, puis en mode `summer` du 16 avril au 14 octobre. Comme la date de début est supérieure à la date de fin, le code traite correctement le passage du 1er janvier.
+
 Dans `addToContext()`, la valeur calculée est exposée à Twig sous `current_season`. Le même contexte expose aussi `options`, `menu` et l'objet `app`.
 
 ## Utilisation dans Twig
@@ -47,3 +49,5 @@ Les URLs de boutique sont enregistrées dans les options `var_site_boutique_wint
 ## Tester une saison
 
 Utiliser `?current-season=winter` ou `?current-season=summer` sur une URL. Après la redirection, le cookie conserve le choix pour les requêtes suivantes. Pour revenir au comportement automatique, supprimer le cookie `timberrock_current_season` ou attendre son expiration, puis désactiver le mode forcé dans les options du thème.
+
+**Exemple de recette :** ouvrir `/services?current-season=summer`, vérifier que l'URL est ensuite nettoyée et que les services d'été sont affichés, puis ouvrir la page d'accueil et confirmer que `body-summer` est présent. Refaire le test avec `current-season=winter` et vérifier l'affichage des offres d'hiver.

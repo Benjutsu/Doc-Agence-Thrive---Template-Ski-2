@@ -65,6 +65,8 @@ Contrôler tous les textes de boutons, notamment `Prenota ora`, `Scopri di più`
 
 Un bouton de réservation n'a pas toujours le même comportement : en hiver, il peut pointer vers l'URL boutique externe ; en été, il ouvre l'iframe. Le texte doit rester cohérent avec cette action dans le header, la hero, les sections, le menu mobile et le footer.
 
+**Exemple :** le bouton « Réserver » du header peut ouvrir `https://booking.example.com/winter` en hiver, mais ouvrir l'iframe en été. Dans les deux cas, le libellé doit être traduit de la même manière et l'action réelle doit être testée.
+
 ### Titres, sous-titres et textes codés dans Twig
 
 Comparer les titres et sous-titres codés dans les appels `__()` avec la maquette : titres de hero, surtitres, sections services, équipements, boutique, station, offres, témoignages, blog, contact et FAQ. Remplacer les chaînes de démonstration qui sont déjà présentes dans le code, notamment les `Lorem ipsum`, `LOREM IPSUM`, `LOREM STATION` et les titres génériques.
@@ -90,7 +92,7 @@ Avant la recette, parcourir toutes les options du thème et les contenus WordPre
 - vérifier le favicon, les images de partage, les alt des images et les métadonnées ;
 - remplacer les images de hero, de menu, de boutique, de station, de marques et de sections par les visuels du nouveau site.
 
-Le nom du projet ne doit pas seulement être changé dans le back-office : vérifier également les noms de thème, text domain, traductions, fichiers de configuration, noms de médias et éventuelles chaînes codées en dur.
+Le nom du projet ne doit pas seulement être changé dans le back-office : vérifier également les traductions, fichiers de configuration, noms de médias et éventuelles chaînes codées en dur.
 
 ### Coordonnées et liens externes
 
@@ -120,6 +122,8 @@ Dans les options **Winter Season** :
 - utiliser le mode forcé uniquement pour les tests ou la recette.
 
 Attribuer ensuite les termes `winter` et `summer` aux services et équipements. Renseigner les champs d'images, descriptions, offres et contenus propres à chaque saison dans les pages et les modèles concernés.
+
+**Exemple :** un service « Location de skis » reçoit le terme `winter`, tandis qu'un service « Location de VTT » reçoit `summer`. Lorsque `current_season` vaut `summer`, la requête `app.getPostType('service', ..., current_season)` ne doit afficher que les services marqués `summer`.
 
 ### Traductions du back-office et du code
 

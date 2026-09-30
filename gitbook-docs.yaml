@@ -1,0 +1,11 @@
+$schema: https://api.gitbook.com/gitbook-docs.yaml
+site:
+  title: Site Web Boutique de ski - Template 2
+  structure:
+    - type: space
+      key: space-1
+      title: Documentation Boutique de ski - Template 2
+      path: docs
+      default: true
+      content:
+        directory: ./docs

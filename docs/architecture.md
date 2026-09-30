@@ -4,7 +4,7 @@ Le thème se trouve dans `cortina-main/web/app/themes/timberrock/`. Les fichiers
 
 ## Organisation de `views`
 
-```text
+```
 views/
 ├── base.twig
 ├── partials/       éléments communs du site
@@ -50,7 +50,9 @@ Pour modifier l'ordre ou retirer un bloc de la page d'accueil, c'est ce fichier 
 
 La page d'accueil possède une petite particularité : elle rend deux instances de `partials/header.twig` pour obtenir un header transparent sur la bannière héro, puis un header classique pour le reste de la page.
 
-> **Information** : ce choix technique a été conservé afin de correspondre à 100 % à la maquette de base, qui prévoit un header transparent superposé à la bannière héro puis un header classique pour la suite de la page.
+{% hint style="info" %}
+Ce choix technique a été conservé afin de correspondre à 100 % à la maquette de base, qui prévoit un header transparent superposé à la bannière héro puis un header classique pour la suite de la page.
+{% endhint %}
 
 Le fonctionnement est le suivant :
 
@@ -72,12 +74,12 @@ Une section représente un bloc complet de page : `banner-hero.twig`, `services.
 
 Les partials sont les éléments partagés entre plusieurs pages :
 
-- `header.twig`, `menu.twig` et `menu-mobile.twig` pour la navigation ;
-- `top-header.twig` pour les dates de saison ;
-- `footer.twig` pour les colonnes et les informations légales ;
-- `head.twig` pour les métadonnées ;
-- `breadcrump.twig` pour le fil d'Ariane ;
-- `iframe.twig` pour la réservation intégrée.
+* `header.twig`, `menu.twig` et `menu-mobile.twig` pour la navigation ;
+* `top-header.twig` pour les dates de saison ;
+* `footer.twig` pour les colonnes et les informations légales ;
+* `head.twig` pour les métadonnées ;
+* `breadcrump.twig` pour le fil d'Ariane ;
+* `iframe.twig` pour la réservation intégrée.
 
 Ils sont inclus avec `include('partials/nom.twig')` depuis `base.twig` ou une page.
 

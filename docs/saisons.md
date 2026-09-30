@@ -40,9 +40,9 @@ Les usages principaux sont :
 
 Pour chaque service et équipement, attribuer le terme `winter` ou `summer` dans la taxonomie `season`. Cette taxonomie est partagée entre les types `service` et `equipment` et reste volontairement indépendante de Polylang.
 
-Pour chaque page qui change avec la saison, renseigner les champs correspondants : par exemple `_image_winter`, `_image_summer`, `_shop_description_winter` et `_shop_description_summer`.
+Pour chaque page qui change avec la saison, renseigner les champs correspondants dans le BO : par exemple `_image_winter`, `_image_summer`, `_shop_description_winter` et `_shop_description_summer`.
 
-Les URLs de boutique sont enregistrées dans les options `var_site_boutique_winter_{lang}` et `var_site_boutique_summer_{lang}`. La fonction Twig `get_permalink_boutique()` gère la langue courante puis utilise la langue par défaut comme fallback.
+Les URLs de boutique sont enregistrées dans les options `var_site_boutique_winter_{lang}` et `var_site_boutique_summer_{lang}`. La fonction Twig `get_permalink_boutique()` gère la langue courante puis renvoie l'URL appropriée.
 
 ## Tester une saison
 

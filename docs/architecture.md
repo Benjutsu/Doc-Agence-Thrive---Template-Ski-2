@@ -46,6 +46,24 @@ La page d'accueil est orchestrée dans `templates/pages/home.twig`. Son ordre ac
 
 Pour modifier l'ordre ou retirer un bloc de la page d'accueil, c'est ce fichier qu'il faut modifier. Pour modifier le contenu ou le HTML d'un bloc, il faut intervenir dans le fichier correspondant de `sections/`.
 
+#### Le double header de la home
+
+La page d'accueil possède une petite particularité : elle rend deux instances de `partials/header.twig` pour obtenir un header transparent sur la bannière héro, puis un header classique pour le reste de la page.
+
+> **Information** : ce choix technique a été conservé afin de correspondre à 100 % à la maquette de base, qui prévoit un header transparent superposé à la bannière héro puis un header classique pour la suite de la page.
+
+Le fonctionnement est le suivant :
+
+1. `home.twig` désactive le bloc `header` fourni par `base.twig` avec `{% block header %}{% endblock %}` ;
+2. dans son bloc `content`, il ajoute un premier header via `header_2`, avant la section `banner-hero` ; ce header est le header global, positionné en `fixed` sur la home avec un fond blanc ;
+3. `sections/banner-hero.twig` inclut à son tour `partials/header.twig`, en lui passant `custom_class: "header-hero"` ;
+4. la classe `.header-hero` rend cette seconde instance transparente, blanche et sans ombre, afin qu'elle se superpose à l'image de la hero ;
+5. la bannière possède un niveau de profondeur supérieur au header global : tant que la hero est visible, le header transparent prend donc le relais visuel ; lorsque l'on sort de la bannière, le header global fixe redevient visible avec son fond blanc.
+
+Cette duplication est volontaire. Elle évite de modifier dynamiquement un seul header tout en conservant un rendu lisible sur les pages internes. Sur desktop, le header de la hero est affiché au-dessus de l'image ; sur mobile, il est masqué et le header global reste utilisé. Le style correspondant se trouve dans `assets/styles/partials/_header.scss` et `assets/styles/sections/_banner-hero.scss`.
+
+Lors de la création d'un nouveau template, il faut conserver les deux inclusions si le rendu transparent est attendu. Si la bannière est supprimée, il faut également supprimer l'inclusion de `header-hero` pour éviter un header redondant.
+
 ### `sections`
 
 Une section représente un bloc complet de page : `banner-hero.twig`, `services.twig`, `equipments.twig`, `the-shop.twig`, `the-station.twig`, `reservation.twig`, etc. Les sections utilisent `current_season` pour choisir les images, les contenus et les liens de réservation.

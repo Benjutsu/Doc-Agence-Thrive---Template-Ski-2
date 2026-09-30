@@ -1,5 +1,7 @@
 # Template ski 2
 
+> **Référence GitLab** : le template 2 se trouve sur la branche `main` du dépôt [AgenceThrive/cortina-pro-sport](https://gitlab.com/AgenceThrive/cortina-pro-sport/-/tree/main).
+
 ## Présentation
 
 Le template 2 est issu du site Cortina, développé avec Bedrock, WordPress, Timber 2 et Twig. Le projet a été standardisé pour fournir une base réutilisable aux futurs sites de stations, boutiques de ski et activités de montagne.
@@ -42,3 +44,4 @@ Les mécanismes transverses sont documentés dans les pages suivantes :
 - **SCSS** pour les variables, composants et sections ;
 - **Stimulus** pour les interactions du menu, du mobile et de la réservation.
 
+La branche `main` du dépôt de référence contient la base du template 2.
